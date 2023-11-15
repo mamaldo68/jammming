@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
+import SearchResults from "./SearchResults";
 
 
 const Jammming = () => {
@@ -12,7 +13,7 @@ const Jammming = () => {
     return(
         <>
             <SearchBar userSearchInput={searchInputHandler} />
-            <p>searchInput sent up to Jammming: {searchInput}</p> {/*delete this after testing */}
+            <SearchResults userSearchInput={searchInput}/>
         </>
     );
     
