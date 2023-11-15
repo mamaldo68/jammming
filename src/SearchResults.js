@@ -8,18 +8,29 @@ const SearchResults = (props) => {
     useEffect(() => {
         setResults([]);
         for(let i = 0; i < mockData.length; i++) {
-            if(mockData[i].artist.toLowerCase() === userSearchInput.toLowerCase()) {
-                setResults(prev => [...prev, mockData[i]]);
+            if(userSearchInput) {
+                if(mockData[i].artist.toLowerCase().includes(userSearchInput.toLowerCase()) ||
+                mockData[i].name.toLowerCase().includes(userSearchInput.toLowerCase()) ||
+                mockData[i].album.toLowerCase().includes(userSearchInput.toLowerCase())) {
+                    setResults(prev => [...prev, mockData[i]]);
+                }
             }
         }
     }, [userSearchInput]);
 
+    const displayResults = (object) => {
+        return (
+            <>
+                <h2>{object.name}</h2>
+                <p>{object.album}</p>
+                <p>{object.artist}</p>
+            </>
+        );
+    }
+
     return(
         <>
-            <p>what was passed to me from jammming: {userSearchInput}</p>
-            
-            {results ? results.map(element => (<p>{element.name}</p>)) : ""}
-            
+            {results && results.map(element => displayResults(element))}
         </>
     );  
 }
