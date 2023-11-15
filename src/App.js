@@ -1,11 +1,12 @@
-import React from "react";
-import SearchBar from "./SearchBar";
+import React, { useState } from "react";
+import Jammming from "./Jammming";
+
 
 
 function App() {
   return (
     <div className="App">
-      <SearchBar />
+      <Jammming />
     </div>
   );
 }
