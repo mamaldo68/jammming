@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
 import Tracklist from "./Tracklist";
+import Playlist from "./Playlist";
 
 
 const Jammming = () => {
     const [searchInput, setSearchInput] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const [tracks, setTracks] = useState([]);
 
     const searchInputHandler = (input) => {
         setSearchInput(input);
@@ -15,7 +17,8 @@ const Jammming = () => {
         <>
             <SearchBar userSearchInput={searchInputHandler} />
             <SearchResults userSearchInput={searchInput} userSearchResults={setSearchResults} />
-            <Tracklist userSearchResults={searchResults} />
+            <Tracklist userSearchResults={searchResults} addTrack={setTracks} />
+            <Playlist />
         </>
     );
     

@@ -1,27 +1,22 @@
 import React, { useState, useEffect } from "react";
+import DisplayResults from "./DisplayResults";
 
 const Tracklist = (props) => {
 
     const [tracklist, setTracklist] = useState([]);
-    const { userSearchResults } = props;
+    const { userSearchResults, addTrack } = props;
 
     useEffect(() => {
         setTracklist(userSearchResults);
     }, [userSearchResults]);
-    
-    const displayResults = (object) => {
-        return (
-            <div key={object.id}>
-                <h2>{object.name}</h2>
-                <p>{object.album}</p>
-                <p>{object.artist}</p>
-            </div>
-        );
-    }
 
+    const clickHandler = (object) => {
+        addTrack(prev => [...prev, object]);
+    }
+ 
     return(
         <>
-            {tracklist && tracklist.map(element => displayResults(element))}
+            {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="+"/>)}
         </>
     );
 }
