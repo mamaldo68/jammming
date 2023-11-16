@@ -5,7 +5,7 @@ const Playlist= (props) => {
 
     const [playlistName, setPlaylistName] = useState("New Playlist");
     const [tracklist, setTracklist] = useState([]);
-    const { addTrack, removeTrack } = props;
+    const { addTrack, removeTrack, addPlaylist } = props;
 
     useEffect(() => {
         setTracklist(addTrack);
@@ -22,7 +22,9 @@ const Playlist= (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        alert(`your playlist: ${playlistName} has been added`);
+        
+        addPlaylist([tracklist]);
+        tracklist.forEach((track) => removeTrack(track));
     }
 
     return(
