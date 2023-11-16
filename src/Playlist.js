@@ -27,10 +27,10 @@ const Playlist= (props) => {
 
     return(
         <>
-            <form>
+            <form onSubmit={submitHandler}>
                 <input type="text" name="playlistName" value={playlistName} onChange={changeHandler} />
                 {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="-" />)}
-                <button type="submit" onSubmit={submitHandler} >Add to Spotify</button>
+                <button type="submit">Add to Spotify</button>
             </form>
         </>
     );
