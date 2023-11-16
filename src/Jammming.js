@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import SearchResults from "./SearchResults";
+import Tracklist from "./Tracklist";
 
 
 const Jammming = () => {
@@ -13,7 +14,8 @@ const Jammming = () => {
     return(
         <>
             <SearchBar userSearchInput={searchInputHandler} />
-            <SearchResults userSearchInput={searchInput}/>
+            <SearchResults userSearchInput={searchInput} userSearchResults={setSearchResults} />
+            <Tracklist userSearchResults={searchResults} />
         </>
     );
     

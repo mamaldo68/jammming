@@ -3,7 +3,7 @@ import mockData from "./mockData";
 
 const SearchResults = (props) => {
     const [results, setResults] = useState([]);
-    const { userSearchInput } = props;
+    const { userSearchInput, userSearchResults } = props;
 
     useEffect(() => {
         setResults([]);
@@ -18,21 +18,9 @@ const SearchResults = (props) => {
         }
     }, [userSearchInput]);
 
-    const displayResults = (object) => {
-        return (
-            <>
-                <h2>{object.name}</h2>
-                <p>{object.album}</p>
-                <p>{object.artist}</p>
-            </>
-        );
-    }
-
-    return(
-        <>
-            {results && results.map(element => displayResults(element))}
-        </>
-    );  
+    useEffect(() => {
+        userSearchResults(results);
+    }, [results]);
 }
 
 export default SearchResults;
