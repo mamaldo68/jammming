@@ -9,7 +9,6 @@ const SearchBar = (props) => {
     }
     const submitHandler = (event) => {
         event.preventDefault();
-        //alert(`you searched for: ${userInput}`); //for testing: get rid of this once it is no longer needed
         props.userSearchInput(userInput);
     }
 

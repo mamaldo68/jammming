@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Playlist= () => {
+const Playlist= (props) => {
 
     const [playlistName, setPlaylistName] = useState("New Playlist");
+    const [tracklist, setTracklist] = useState([]);
+    const { addTrack } = props;
+
+    useEffect(() => {
+        if(addTrack) {
+            setTracklist(addTrack);
+        }
+    }, [addTrack]);
 
     const changeHandler = ({ target }) => {
         setPlaylistName(target.value);

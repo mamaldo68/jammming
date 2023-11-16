@@ -18,7 +18,7 @@ const Jammming = () => {
             <SearchBar userSearchInput={searchInputHandler} />
             <SearchResults userSearchInput={searchInput} userSearchResults={setSearchResults} />
             <Tracklist userSearchResults={searchResults} addTrack={setTracks} />
-            <Playlist />
+            <Playlist addTrack={tracks} />
         </>
     );
     
