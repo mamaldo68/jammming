@@ -13,12 +13,18 @@ const Jammming = () => {
     const searchInputHandler = (input) => {
         setSearchInput(input);
     }
+    const addTrack = (track) => {
+        setTracks(prev => [...prev, track]);
+    }
+    const removeTrack = (track) => {
+        setTracks(prev => prev.filter(item => item.id !== track.id))
+    }
     return(
         <>
             <SearchBar userSearchInput={searchInputHandler} />
             <SearchResults userSearchInput={searchInput} userSearchResults={setSearchResults} />
-            <Tracklist userSearchResults={searchResults} addTrack={setTracks} />
-            <Playlist addTrack={tracks} />
+            <Tracklist userSearchResults={searchResults} addTrack={addTrack} />
+            <Playlist addTrack={tracks} removeTrack={removeTrack} />
         </>
     );
     

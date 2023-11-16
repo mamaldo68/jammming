@@ -7,7 +7,7 @@ const DisplayResults = (props) => {
                 <h2>{object.name}</h2>
                 <p>{object.album}</p>
                 <p>{object.artist}</p>
-                <button onClick={() => onClick(object)}>{button}</button>
+                <button type="button" onClick={() => onClick(object)}>{button}</button>
             </div>
         );
 }

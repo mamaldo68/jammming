@@ -11,7 +11,7 @@ const Tracklist = (props) => {
     }, [userSearchResults]);
 
     const clickHandler = (object) => {
-        addTrack(prev => [...prev, object]);
+        addTrack(object);
     }
  
     return(
