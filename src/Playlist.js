@@ -22,7 +22,7 @@ const Playlist= (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        alert('your playlist has been added');
+        alert(`your playlist: ${playlistName} has been added`);
     }
 
     return(
