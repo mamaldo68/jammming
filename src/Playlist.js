@@ -5,6 +5,7 @@ const Playlist= (props) => {
 
     const [playlistName, setPlaylistName] = useState("New Playlist");
     const [tracklist, setTracklist] = useState([]);
+    const [keyCount, setKeyCount] = useState(0);
     const { addTrack, removeTrack, addPlaylist } = props;
 
     useEffect(() => {
@@ -22,7 +23,8 @@ const Playlist= (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        addPlaylist({name: playlistName, tracklist: tracklist, moreInfo: false});
+        addPlaylist({name: playlistName, tracklist: tracklist, moreInfo: false, key: keyCount});
+        setKeyCount(prev => prev + 1);
         tracklist.forEach((track) => removeTrack(track));
     }
 

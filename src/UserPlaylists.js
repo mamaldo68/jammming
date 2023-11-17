@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const UserPlaylists = (props) => {
     const { playlists } = props;
-    //Fixme button is not working, need to make a state that holds the objects
-    const infoHandler = (object) => {
-        if(object.moreInfo) {
-            object.moreInfo = false;
-        } else {
-            object.moreInfo = true;
-        }
+    const [showMoreInfo, setShowMoreInfo] = useState(playlists);
+
+    useEffect(() => {
+        setShowMoreInfo(playlists);
+    }, [playlists]);
+
+    const moreInfoHandler = (object) => {
+        const updatedPlaylist = showMoreInfo.map((element) => 
+            element.key === object.key ? {...element, moreInfo: object.moreInfo ? false : true} : element
+        );
+        setShowMoreInfo(updatedPlaylist);
     }
     const displayPlaylists = (object) => {
         return(
             <>
                 <p>{object.name}</p>
-                <button type="button" onClick={() => infoHandler(object)}>V</button>
-                {object.moreInfo && <p>show this info</p>}
+                {object.moreInfo && object.tracklist.map(index => displayInfo(index))}
+                <button type="button" onClick={() => moreInfoHandler(object)}>{object.moreInfo ? "^" : "v"}</button>
             </>
+        );
+    }
+    const displayInfo = (index) => {
+        return(
+            <p>{index.name}, {index.album}, {index.artist}</p>
         );
     }
 
     return(
         <>
             <h3>My Playlists</h3>
-            {playlists && playlists.map(element => displayPlaylists(element))}
+            {showMoreInfo && showMoreInfo.map(element => displayPlaylists(element))}
         </>
     );
 }
