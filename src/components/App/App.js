@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import SearchBar from "./SearchBar";
-import SearchResults from "./SearchResults";
-import Tracklist from "./Tracklist";
-import Playlist from "./Playlist";
-import UserPlaylists from "./UserPlaylists";
+import SearchBar from "../SearchBar/SearchBar";
+import SearchResults from "../SearchResults/SearchResults";
+import Tracklist from "../Tracklist/Tracklist";
+import Playlist from "../Playlist/Playlist";
+import UserPlaylists from "../UserPlaylists/UserPlaylists";
 
 
-const Jammming = () => {
+const App = () => {
     const [searchInput, setSearchInput] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [tracks, setTracks] = useState([]);
@@ -42,4 +42,4 @@ const Jammming = () => {
     
 }
 
-export default Jammming;
+export default App;

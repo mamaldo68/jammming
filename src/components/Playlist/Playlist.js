@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DisplayResults from "./DisplayResults";
+import DisplayResults from "../DisplayResults/DisplayResults";
 
 const Playlist= (props) => {
 
