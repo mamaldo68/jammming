@@ -23,7 +23,7 @@ const Playlist= (props) => {
 
     const submitHandler = (event) => {
         event.preventDefault();
-        addPlaylist({name: playlistName, tracklist: tracklist, moreInfo: false, key: keyCount});
+        addPlaylist({name: playlistName, tracklist: tracklist, moreInfo: false, key: keyCount, edit: false});
         setKeyCount(prev => prev + 1);
         tracklist.forEach((track) => removeTrack(track));
     }

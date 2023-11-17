@@ -27,13 +27,16 @@ const Jammming = () => {
     const addPlaylist = (playlist) => {
         setPlaylists(prev => [...prev, playlist]);
     }
+    const editPlaylist = (playlist) => {
+        setPlaylists(playlist);
+    }
     return(
         <>
             <SearchBar userSearchInput={searchInputHandler} />
             <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} />
             <Tracklist userSearchResults={searchResults} addTrack={addTrack} />
             <Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} />
-            <UserPlaylists playlists={playlists} />
+            <UserPlaylists playlists={playlists} editPlaylist={editPlaylist}/>
         </>
     );
     
