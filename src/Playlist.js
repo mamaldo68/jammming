@@ -31,9 +31,9 @@ const Playlist= (props) => {
     return(
         <>
             <form onSubmit={submitHandler}>
-                <input type="text" name="playlistName" value={playlistName} onChange={changeHandler} />
+                <input style={{display: "inline-block"}} type="text" name="playlistName" value={playlistName} onChange={changeHandler} />
+                <button style={{display: "inline-block", marginLeft: 10}} type="submit">Create Playlist</button>
                 {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="-" />)}
-                <button type="submit">Add to Spotify</button>
             </form>
         </>
     );
