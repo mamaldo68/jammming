@@ -4,6 +4,7 @@ import SearchResults from "../SearchResults/SearchResults";
 import Tracklist from "../Tracklist/Tracklist";
 import Playlist from "../Playlist/Playlist";
 import UserPlaylists from "../UserPlaylists/UserPlaylists";
+import Spotify from "../../util/Spotify";
 
 
 const App = () => {
@@ -30,6 +31,10 @@ const App = () => {
     const editPlaylist = (playlist) => {
         setPlaylists(playlist);
     }
+    //testing spotify stuff
+    const spotifyHandler = () => {
+        Spotify.getAccess();
+    }
     return(
         <>
             <SearchBar userSearchInput={searchInputHandler} />
@@ -37,6 +42,8 @@ const App = () => {
             <Tracklist userSearchResults={searchResults} addTrack={addTrack} />
             <Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} />
             <UserPlaylists playlists={playlists} editPlaylist={editPlaylist}/>
+            {/*testing to see what happens with the new spotify stuff*/}
+            <button type="button" onClick={spotifyHandler}>lets see what this does</button>
         </>
     );
     
