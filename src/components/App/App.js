@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Tracklist from "../Tracklist/Tracklist";
@@ -8,10 +8,18 @@ import Spotify from "../../util/Spotify";
 
 
 const App = () => {
-    const [searchInput, setSearchInput] = useState("");
-    const [searchResults, setSearchResults] = useState([]);
-    const [tracks, setTracks] = useState([]);
-    const [playlists, setPlaylists] = useState([]);
+    const [searchInput, setSearchInput] = useState();
+    const [searchResults, setSearchResults] = useState();
+    const [tracks, setTracks] = useState();
+    const [playlists, setPlaylists] = useState();
+    const [accessToken, setAccessToken] = useState();
+
+    useEffect(() => {
+        if(!accessToken) {
+            setAccessToken(Spotify.getAccess());
+        }
+        
+    }, [accessToken]);
 
     const searchInputHandler = (input) => {
         setSearchInput(input);
@@ -31,19 +39,14 @@ const App = () => {
     const editPlaylist = (playlist) => {
         setPlaylists(playlist);
     }
-    //testing spotify stuff
-    const spotifyHandler = () => {
-        Spotify.getAccess();
-    }
+
     return(
         <>
             <SearchBar userSearchInput={searchInputHandler} />
-            <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} />
+            <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} accessToken={accessToken} />
             <Tracklist userSearchResults={searchResults} addTrack={addTrack} />
             <Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} />
             <UserPlaylists playlists={playlists} editPlaylist={editPlaylist}/>
-            {/*testing to see what happens with the new spotify stuff*/}
-            <button type="button" onClick={spotifyHandler}>lets see what this does</button>
         </>
     );
     

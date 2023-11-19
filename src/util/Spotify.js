@@ -34,7 +34,11 @@ const Spotify = {
 
             window.location = url;
         }
-    }
+    },
+
+    async search(query) {
+        
+    }    
 };
 
 export default Spotify;
