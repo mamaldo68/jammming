@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DisplayResults from "../DisplayResults/DisplayResults";
 
-const Playlist= (props) => {
+const Playlist= ({ addTrack, removeTrack, addPlaylist }) => {
 
     const [playlistName, setPlaylistName] = useState("New Playlist");
     const [tracklist, setTracklist] = useState([]);
     const [keyCount, setKeyCount] = useState(0);
-    const { addTrack, removeTrack, addPlaylist } = props;
 
     useEffect(() => {
         setTracklist(addTrack);

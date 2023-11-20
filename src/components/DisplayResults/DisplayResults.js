@@ -1,7 +1,6 @@
 import React from "react";
 
-const DisplayResults = (props) => {
-    const { object, onClick, button } = props
+const DisplayResults = ({ object, onClick, button }) => {
         return (
             <div>
                 <h2>{object.name}</h2>

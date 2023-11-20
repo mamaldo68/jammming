@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DisplayResults from "../DisplayResults/DisplayResults";
 
-const Tracklist = (props) => {
-
-    const [tracklist, setTracklist] = useState([]);
-    const { userSearchResults, addTrack } = props;
-
-    useEffect(() => {
-        setTracklist(userSearchResults);
-    }, [userSearchResults]);
+const Tracklist = ({ userSearchResults, addTrack }) => {
 
     const clickHandler = (object) => {
         addTrack(object);
@@ -16,7 +9,7 @@ const Tracklist = (props) => {
  
     return(
         <>
-            {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="+"/>)}
+            {userSearchResults && userSearchResults.map(element => <DisplayResults object={element} onClick={clickHandler} button="+"/>)}
         </>
     );
 }

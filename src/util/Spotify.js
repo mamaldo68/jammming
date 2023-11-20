@@ -56,7 +56,6 @@ const Spotify = {
             });
             if(response.ok) {
                 let jsonResponse = await response.json();
-                console.log(jsonResponse.tracks.items);
                 return jsonResponse.tracks.items;
             }
         } catch(error) {
@@ -136,8 +135,7 @@ const Spotify = {
                 })
             });
             if(response.ok) {
-                let jsonResponse = await response.json();
-                console.log(jsonResponse);
+                console.log("post request successful");
             }
         } catch(error) {
             console.log(error.message);

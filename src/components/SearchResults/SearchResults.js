@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import mockData from "../../mockData";
+import React, { useEffect } from "react";
 import Spotify from "../../util/Spotify";
 
-const SearchResults = (props) => {
-    const { userSearchInput, userSearchResults, accessToken } = props;
+const SearchResults = ({ userSearchInput, userSearchResults, accessToken }) => {
 
     useEffect(() => {
         if(accessToken) { 
