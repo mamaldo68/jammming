@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import Spotify from "../../util/Spotify";
 
 const UserPlaylists = (props) => {
-    const { playlists, editPlaylist } = props;
+    const { playlists, editPlaylist, accessToken } = props;
     const [playlistInfo, setPlaylistInfo] = useState(playlists);
     const [playlistName, setPlaylistName] = useState("");
+    const [userID, setUserID] = useState("");
+    const [playlistID, setPlaylistID] = useState("");
 
     useEffect(() => {
         setPlaylistInfo(playlists);
@@ -73,13 +76,29 @@ const UserPlaylists = (props) => {
 
     // sends selected playlist to Spotify
     const sendPlaylist = (object) => {
-        alert(`${object.name} has been uploaded to Spotify`);
-    }
+        let uriArray = object.tracklist.map(track => track.uri);
+        console.log(uriArray);
+        Spotify.userID(accessToken)
+        .then((userID) => {
+            setUserID(userID);
+            return Spotify.createPlaylist(accessToken, userID, object);
+        })
+        .then((playlistID) => {
+            setPlaylistID(playlistID);
+            return Spotify.addTracksToPlaylist(accessToken, playlistID, uriArray)
+        })
+        .catch((error) => {
+            console.error(error.message);
+        });
+    };
+
 
     return(
         <>
             <h3>My Playlists</h3>
             {playlistInfo && playlistInfo.map(element => displayPlaylists(element))}
+            {userID && <p>userID is: {userID}</p>}
+            {playlistID && <p>playlistID is: {playlistID}</p>}
         </>
     );
 }

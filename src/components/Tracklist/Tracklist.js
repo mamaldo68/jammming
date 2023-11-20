@@ -16,7 +16,7 @@ const Tracklist = (props) => {
  
     return(
         <>
-            {userSearchResults && userSearchResults.map(element => <DisplayResults object={element} onClick={clickHandler} button="+"/>)}
+            {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="+"/>)}
         </>
     );
 }

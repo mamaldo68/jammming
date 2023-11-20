@@ -8,11 +8,11 @@ import Spotify from "../../util/Spotify";
 
 
 const App = () => {
-    const [searchInput, setSearchInput] = useState();
-    const [searchResults, setSearchResults] = useState();
-    const [tracks, setTracks] = useState();
-    const [playlists, setPlaylists] = useState();
-    const [accessToken, setAccessToken] = useState();
+    const [searchInput, setSearchInput] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [tracks, setTracks] = useState([]);
+    const [playlists, setPlaylists] = useState([]);
+    const [accessToken, setAccessToken] = useState("");
 
     useEffect(() => {
         if(!accessToken) {
@@ -42,12 +42,12 @@ const App = () => {
 
     return(
         <>
+            <h1>Jammming</h1>
             <SearchBar userSearchInput={searchInputHandler} />
             <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} accessToken={accessToken} />
             <Tracklist userSearchResults={searchResults} addTrack={addTrack} />
-           {/*  
             <Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} />
-            <UserPlaylists playlists={playlists} editPlaylist={editPlaylist}/> */}
+            <UserPlaylists playlists={playlists} editPlaylist={editPlaylist} accessToken={accessToken}/>
         </>
     );
     

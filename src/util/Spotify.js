@@ -28,8 +28,10 @@ const Spotify = {
             return accessToken;
         } else {
             let url = "https://accounts.spotify.com/authorize";
+            let scope = "playlist-modify-private playlist-modify-public user-read-private user-read-email"
             url += "?response_type=token";
             url += "&client_id=" + encodeURIComponent(clientID);
+            url += "&scope=" + encodeURIComponent(scope);
             url += "&redirect_uri=" + encodeURIComponent(redirectURI);
 
             window.location = url;
@@ -60,7 +62,87 @@ const Spotify = {
         } catch(error) {
             console.log(error.message);
         }
-    }    
+    },
+    
+    async userID(userAccessToken) {
+        const url = "https://api.spotify.com/v1/me";
+        let token = userAccessToken;
+
+        try {
+            let response = await fetch(url, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+            if(response.ok) {
+                let jsonResponse = await response.json();
+                return jsonResponse.id;
+            } else {
+                console.error(`Error ${response.status}: ${response.statusText}`);
+                let errorResponse = await response.json();
+                console.error(errorResponse);
+                throw new Error(`Failed to fetch user ID. ${errorResponse.error.message}`);
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
+    },
+
+    async createPlaylist(userAccessToken, userID, object) {
+        let url = `https://api.spotify.com/v1/users/${userID}/playlists`;
+        let token = userAccessToken;
+
+        try{
+            let response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "name": object.name,
+                    "description": "a cool playlist",
+                    "public": false
+                })
+            });
+            if(response.ok) {
+                let jsonResponse = await response.json();
+                return jsonResponse.id;
+            } else {
+                console.error(`Error ${response.status}: ${response.statusText}`);
+                let errorResponse = await response.json();
+                console.error(errorResponse);
+                throw new Error(`Failed to create playlist. ${errorResponse.error.message}`);
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
+    },
+
+    async addTracksToPlaylist(userAccessToken, playlistID, uriArray) {
+        let url = `https://api.spotify.com/v1/playlists/${playlistID}/tracks`;
+        let token = userAccessToken;
+
+        try {
+            let response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "uris": uriArray
+                })
+            });
+            if(response.ok) {
+                let jsonResponse = await response.json();
+                console.log(jsonResponse);
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
+    }
 };
 
 export default Spotify;
