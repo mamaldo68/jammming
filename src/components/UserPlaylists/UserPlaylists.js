@@ -33,8 +33,7 @@ const UserPlaylists = ({ playlists, editPlaylist, accessToken }) => {
         return(
             <>
                 <p>{index.name}</p>
-                <p>{index.album}</p>
-                <p>{index.artist}</p>
+                <p>{index.artists[0].name} | {index.album.name}</p>
                 <br />
             </>
         );
@@ -72,18 +71,15 @@ const UserPlaylists = ({ playlists, editPlaylist, accessToken }) => {
     }
 
     // sends selected playlist to Spotify
-    const sendPlaylist = (object) => {
-        let uriArray = object.tracklist.map(track => track.uri);
-        Spotify.userID(accessToken)
-        .then((userID) => {
-            return Spotify.createPlaylist(accessToken, userID, object);
-        })
-        .then((playlistID) => {
-            return Spotify.addTracksToPlaylist(accessToken, playlistID, uriArray)
-        })
-        .catch((error) => {
+    const sendPlaylist = async (object) => {
+        try {
+            const uriArray = object.tracklist.map(track => track.uri);
+            const userID = await Spotify.userID(accessToken)
+            const playlistID = await Spotify.createPlaylist(accessToken, userID, object);
+            await Spotify.addTracksToPlaylist(accessToken, playlistID, uriArray)
+        } catch(error) {
             console.error(error.message);
-        });
+        }
     };
 
 
