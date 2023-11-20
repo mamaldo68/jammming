@@ -45,8 +45,9 @@ const App = () => {
             <SearchBar userSearchInput={searchInputHandler} />
             <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} accessToken={accessToken} />
             <Tracklist userSearchResults={searchResults} addTrack={addTrack} />
+           {/*  
             <Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} />
-            <UserPlaylists playlists={playlists} editPlaylist={editPlaylist}/>
+            <UserPlaylists playlists={playlists} editPlaylist={editPlaylist}/> */}
         </>
     );
     

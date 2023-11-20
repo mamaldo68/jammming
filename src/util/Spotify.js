@@ -37,7 +37,29 @@ const Spotify = {
     },
 
     async search(query) {
-        
+        const baseURL = "https://api.spotify.com/v1/search?";
+        let userSearch = `q=${query}`;
+        let type = "&type=track";
+        let market = "&market=US";
+        let limit = "&limit=10";
+        let urlToFetch = baseURL + userSearch + type + market + limit;
+        let token = accessToken;
+
+        try {
+            let response = await fetch(urlToFetch, {
+                method: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+            if(response.ok) {
+                let jsonResponse = await response.json();
+                console.log(jsonResponse.tracks.items);
+                return jsonResponse.tracks.items;
+            }
+        } catch(error) {
+            console.log(error.message);
+        }
     }    
 };
 

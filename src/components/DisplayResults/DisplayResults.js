@@ -3,10 +3,10 @@ import React from "react";
 const DisplayResults = (props) => {
     const { object, onClick, button } = props
         return (
-            <div key={object.id}>
+            <div>
                 <h2>{object.name}</h2>
-                <p>{object.album}</p>
-                <p>{object.artist}</p>
+                <p>{object.album.name}</p>
+                <p>{object.artists[0].name}</p>
                 <button type="button" onClick={() => onClick(object)}>{button}</button>
             </div>
         );
