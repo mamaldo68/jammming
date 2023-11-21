@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DisplayResults from "../DisplayResults/DisplayResults";
+import styles from "./Playlist.module.css";
 
 const Playlist= ({ addTrack, removeTrack, addPlaylist }) => {
 
@@ -28,13 +29,13 @@ const Playlist= ({ addTrack, removeTrack, addPlaylist }) => {
     }
 
     return(
-        <>
+        <div className={styles.container}>
             <form onSubmit={submitHandler}>
                 <input style={{display: "inline-block"}} type="text" name="playlistName" value={playlistName} onChange={changeHandler} />
                 <button style={{display: "inline-block", marginLeft: 10}} type="submit">Create Playlist</button>
                 {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="-" />)}
             </form>
-        </>
+        </div>
     );
 }
 

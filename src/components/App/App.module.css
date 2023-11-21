@@ -1,0 +1,17 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+.div1 { grid-area: 1 / 1 / 2 / 14; }
+.div2 { grid-area: 2 / 5 / 3 / 10; }
+.div3 { grid-area: 3 / 2 / 11 / 5; }
+.div4 { grid-area: 3 / 6 / 11 / 9; }
+.div5 { grid-area: 3 / 10 / 11 / 13; }
+
+.header { 
+    color: #1DB954;
+    text-align: center;
+}
