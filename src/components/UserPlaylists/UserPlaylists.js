@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Spotify from "../../util/Spotify";
+import styles from "./UserPlaylists.module.css";
 
 const UserPlaylists = ({ playlists, editPlaylist, accessToken }) => {
     const [playlistInfo, setPlaylistInfo] = useState(playlists);
@@ -13,29 +14,29 @@ const UserPlaylists = ({ playlists, editPlaylist, accessToken }) => {
     // displays functions for playlists with editing and more info options
     const displayPlaylists = (object) => {
         return(
-            <>  
+            <div className={styles.container}>  
                 {object.edit ? 
                 <form onSubmit={(event) => renameSubmitHandler(event, object)}>
-                    <input type="text" value={playlistName} onChange={changeHandler}/>
-                    <button type="submit">Save</button>
-                </form> : <p style={{marginLeft: 10}}>{object.name}</p>}
+                    <input className={styles.input} type="text" value={playlistName} onChange={changeHandler}/>
+                    <button className={styles.button} type="submit">Save</button>
+                </form> : <p className={styles.playlistName}>{object.name}</p>}
                 
-                {!object.edit && <button style={{display: "inline-block", marginLeft: 10}} type="button" onClick={() => renameClickHandler(object)}>rename</button>}
-                <button style={{display: "inline-block", marginLeft: 10}} type="button" onClick={() => moreInfoHandler(object)}>{object.moreInfo ? "Hide Tracklist" : "Show Tracklist"}</button>
-                <button style={{display: "inline-block", marginLeft: 10}} type="button" onClick={() => sendPlaylist(object)}>Add to Spotify</button>
+                {!object.edit && <button className={styles.button} type="button" onClick={() => renameClickHandler(object)}>rename</button>}
+                <button className={styles.button} type="button" onClick={() => moreInfoHandler(object)}>{object.moreInfo ? "Hide Tracklist" : "Show Tracklist"}</button>
+                <button className={styles.button} type="button" onClick={() => sendPlaylist(object)}>Add to Spotify</button>
                 {object.moreInfo && object.tracklist.map(index => displayInfo(index))}
                 <br />
-            </>
+            </div>
         );
     }
 
     const displayInfo = (index) => {
         return(
-            <>
+            <div className={styles.displayInfo}>
                 <p>{index.name}</p>
                 <p>{index.artists[0].name} | {index.album.name}</p>
                 <br />
-            </>
+            </div>
         );
     }
 
@@ -85,7 +86,7 @@ const UserPlaylists = ({ playlists, editPlaylist, accessToken }) => {
 
     return(
         <>
-            <h3>My Playlists</h3>
+            <h3 className={styles.header}>My Playlists</h3>
             {playlistInfo && playlistInfo.map(element => displayPlaylists(element))}
         </>
     );

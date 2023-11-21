@@ -1,0 +1,37 @@
+.container {
+    text-align: center;
+}
+
+.header {
+    text-align: center;
+    color: #1DB954;
+}
+
+.button {
+    color: #000;
+    background-color: #1DB954;
+    display: inline-block;
+    margin-left: 10
+}
+
+.input {
+    background-color: #000;
+    color: #1DB954;
+    display: inline-block;
+}
+
+.playlistName {
+    color: #1DB954;
+    background-color: #000;
+    border-radius: 5px;
+}
+
+.displayInfo {
+    background-color: #1DB954;
+    border-radius: 5px;
+    width: 100%;
+    height: 4em;
+    box-shadow: 10px 10px 5px black;
+    margin-left: 1em;
+    text-align: center;
+}

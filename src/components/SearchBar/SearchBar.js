@@ -16,8 +16,8 @@ const SearchBar = ({ userSearchInput }) => {
     return(
         <div className={styles.container}>
             <form onSubmit={submitHandler}>
-                <input type="text" value={userInput} onChange={changeHandler}/>
-                <button type="submit">Search</button>
+                <input className={styles.input} type="text" value={userInput} onChange={changeHandler}/>
+                <button className={styles.button} type="submit">Search</button>
             </form>
         </div>
     );

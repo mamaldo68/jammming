@@ -29,12 +29,12 @@ const Playlist= ({ addTrack, removeTrack, addPlaylist }) => {
     }
 
     return(
-        <div className={styles.container}>
-            <form onSubmit={submitHandler}>
-                <input style={{display: "inline-block"}} type="text" name="playlistName" value={playlistName} onChange={changeHandler} />
-                <button style={{display: "inline-block", marginLeft: 10}} type="submit">Create Playlist</button>
-                {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="-" />)}
+        <div>
+            <form className={styles.form} onSubmit={submitHandler}>
+                <input className={styles.input} type="text" name="playlistName" value={playlistName} onChange={changeHandler} />
+                <button className={styles.button} type="submit">Create Playlist</button>
             </form>
+            {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="-" />)}
         </div>
     );
 }
