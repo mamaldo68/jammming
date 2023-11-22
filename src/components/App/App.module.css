@@ -18,11 +18,8 @@
 
 @media only screen and (max-width: 767px) {
     .container {
-        display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 7rem 3rem 12rem 12rem 6.5rem;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
     }
 
     .title { grid-area: 1 / 1 / 2 / 2; }

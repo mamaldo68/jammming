@@ -48,12 +48,8 @@
 
 @media only screen and (max-width: 767px) {
     .container {
-        display: grid;
         grid-template-columns: 4fr 1fr;
         grid-template-rows: 2rem 1rem 1rem;
-        grid-column-gap: 0px;
-        grid-row-gap: 0px;
-        margin-right: 1rem;
         width: 90%;
         min-height: 0;
         max-height: 4rem;
@@ -82,5 +78,31 @@
         justify-self: center;
         align-self: end;
         
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        grid-template-rows: repeat(3, 1fr) 0.5fr;
+    }
+
+    .name {
+        grid-area: 1 / 1 / 3 / 4;
+        font-size: 1rem;
+    }
+
+    .trackInfo {
+        grid-area: 3 / 1 / 5 / 6;
+        font-size: 0.6rem;
+    }
+
+    .button {
+        grid-area: 4 / 1 / 6 / 6;
+    }
+
+    .img {
+        width: 100%;
+        height: auto;
+        align-self: start; 
     }
 }

@@ -10,7 +10,7 @@
     margin-left: 10
 }
 
-.input{
+.input {
     background-color: #000;
     color: #1DB954;
     display: inline-block;
@@ -26,5 +26,19 @@
 
     .container {
         overflow-y: auto;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .form {
+        text-align: center;
+        position: relative;
+        top: -1em;
+    }
+
+    .container {
+        position: relative;
+        top: -1.5em;
+        left: -1em;
     }
 }
