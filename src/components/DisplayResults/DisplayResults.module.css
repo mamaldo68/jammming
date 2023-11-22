@@ -9,8 +9,8 @@
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    min-height: 150px;
-    max-height: 200px;
+    min-height: 9.375rem;
+    max-height: 12.5rem;
     margin-top: 1rem;
 }
 
@@ -44,4 +44,43 @@
     justify-self: end;
     align-self: end;
     border-radius: 5px;
+}
+
+@media only screen and (max-width: 767px) {
+    .container {
+        display: grid;
+        grid-template-columns: 4fr 1fr;
+        grid-template-rows: 2rem 1rem 1rem;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        margin-right: 1rem;
+        width: 90%;
+        min-height: 0;
+        max-height: 4rem;
+    }
+
+    .name {
+        grid-area: 1 / 1 / 2 / 2;
+        font-size: 0.65rem;
+        align-self: center;
+    }
+
+    .trackInfo {
+        grid-area: 2 / 1 / 3 / 3;
+        font-size: 0.6rem;
+        align-self: center;
+    }
+
+    .button {
+        grid-area: 3 / 1 / 4 / 3;
+        font-size: 0.6rem;
+    }
+
+    .img {
+        grid-area: 1 / 2 / 3 / 3;
+        width: 100%;
+        justify-self: center;
+        align-self: end;
+        
+    }
 }

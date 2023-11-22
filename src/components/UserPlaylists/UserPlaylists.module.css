@@ -35,3 +35,18 @@
     margin-left: 1em;
     text-align: center;
 }
+
+@media only screen and (max-width: 767px) {
+    .displayInfo {
+        width: 90%;
+        height: 4rem;
+        font-size: 0.65rem;
+        margin: 1rem auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding-top: 1rem;
+    }
+}

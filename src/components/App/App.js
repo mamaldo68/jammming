@@ -43,12 +43,12 @@ const App = () => {
 
     return(
         <div className={styles.container}>
-            <div className={styles.div1}><h1 className={styles.header}>Jammming</h1></div>
-            <div className={styles.div2}><SearchBar userSearchInput={searchInputHandler} /></div>
+            <div className={styles.title}><h1 className={styles.header}>Jammming</h1></div>
+            <div className={styles.searchBar}><SearchBar userSearchInput={searchInputHandler} /></div>
             <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} accessToken={accessToken} />
-            <div className={styles.div3}><Tracklist userSearchResults={searchResults} addTrack={addTrack} /></div>
-            <div className={styles.div4}><Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} /></div>
-            <div className={styles.div5}><UserPlaylists playlists={playlists} editPlaylist={editPlaylist} accessToken={accessToken}/></div>
+            <div className={styles.tracklist}><Tracklist userSearchResults={searchResults} addTrack={addTrack} /></div>
+            <div className={styles.playlists}><Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} /></div>
+            <div className={styles.userPlaylists}><UserPlaylists playlists={playlists} editPlaylist={editPlaylist} accessToken={accessToken}/></div>
         </div>
     );
     
