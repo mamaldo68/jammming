@@ -34,7 +34,7 @@ const Playlist= ({ addTrack, removeTrack, addPlaylist }) => {
                 <input className={styles.input} type="text" name="playlistName" value={playlistName} onChange={changeHandler} />
                 <button className={styles.button} type="submit">Create Playlist</button>
             </form>
-            {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="-" />)}
+            {tracklist && tracklist.map(element => <DisplayResults object={element} onClick={clickHandler} button="Remove from Playlist" />)}
         </div>
     );
 }
