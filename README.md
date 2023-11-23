@@ -6,7 +6,10 @@ Jammming is a project for codecademy.
 The function of this app is to allow the user to search using Spotify's API 
 and create custom playlists that will be saved to the user's Spotify account.
 
-## How to run the program
+## View the app online
+https://maldo-jammming.netlify.app/
+
+## How to run the program locally
 
 In the project directory, you can run:
 
