@@ -38,13 +38,14 @@ const Spotify = {
         }
     },
 
-    async search(query) {
+    async search(query, trackOffset) {
         const baseURL = "https://api.spotify.com/v1/search?";
         let userSearch = `q=${query}`;
         let type = "&type=track";
         let market = "&market=US";
         let limit = "&limit=10";
-        let urlToFetch = baseURL + userSearch + type + market + limit;
+        let offset = `&offset=${trackOffset}`;
+        let urlToFetch = baseURL + userSearch + type + market + limit + offset;
         let token = accessToken;
 
         try {

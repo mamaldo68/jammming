@@ -14,6 +14,7 @@ const App = () => {
     const [tracks, setTracks] = useState([]);
     const [playlists, setPlaylists] = useState([]);
     const [accessToken, setAccessToken] = useState("");
+    const [offset, setOffset] = useState(0);
 
     useEffect(() => {
         if(!accessToken) {
@@ -40,13 +41,19 @@ const App = () => {
     const editPlaylist = (playlist) => {
         setPlaylists(playlist);
     }
+    const resetOffset = () => {
+        setOffset(0);
+    }
+    const changeOffset = (num) => {
+        setOffset(prev => prev + num);
+    }
 
     return(
         <div className={styles.container}>
             <div className={styles.title}><h1 className={styles.header}>Jammming</h1></div>
-            <div className={styles.searchBar}><SearchBar userSearchInput={searchInputHandler} /></div>
-            <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} accessToken={accessToken} />
-            <div className={styles.tracklist}><Tracklist userSearchResults={searchResults} addTrack={addTrack} /></div>
+            <div className={styles.searchBar}><SearchBar userSearchInput={searchInputHandler} resetOffset={resetOffset}/></div>
+            <SearchResults userSearchInput={searchInput} userSearchResults={updateSearchResults} accessToken={accessToken} offset={offset} />
+            <div className={styles.tracklist}><Tracklist userSearchResults={searchResults} addTrack={addTrack} changeOffset={changeOffset} offset={offset} /></div>
             <div className={styles.playlists}><Playlist addTrack={tracks} removeTrack={removeTrack} addPlaylist={addPlaylist} /></div>
             <div className={styles.userPlaylists}><UserPlaylists playlists={playlists} editPlaylist={editPlaylist} accessToken={accessToken}/></div>
         </div>

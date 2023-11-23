@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
 
-const SearchBar = ({ userSearchInput }) => {
+const SearchBar = ({ userSearchInput, resetOffset }) => {
 
     const [userInput, setUserInput] = useState("");
 
@@ -10,6 +10,7 @@ const SearchBar = ({ userSearchInput }) => {
     }
     const submitHandler = (event) => {
         event.preventDefault();
+        resetOffset();
         userSearchInput(userInput);
     }
 
